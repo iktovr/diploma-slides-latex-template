@@ -1,0 +1,74 @@
+% Пакеты
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{graphicx}
+\usepackage{svg}
+
+\usepackage{caption}
+\captionsetup[figure]{
+  labelformat=empty,
+  position=below,
+  justification=centering,
+}
+
+\makeatletter
+\def\fps@figure{H} % Всегда [H]
+\g@addto@macro\@floatboxreset\centering % Всегда по центру
+\makeatother
+
+\usepackage{subfig}
+\usepackage{subcaption}
+\captionsetup[subfloat]{
+  labelformat=empty,
+  position=below,
+  justification=centering,
+}
+
+% Тема и ее настройки
+\usetheme{Berlin}
+\setbeamertemplate{headline}[default]
+\setbeamertemplate{page number in head/foot}[framenumber]
+\setbeamertemplate{navigation symbols}{}
+
+% Настройки титульной страницы
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    % institute
+    \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \vskip1em
+    % title
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}
+    \vskip1em\par
+    % author
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \begin{tabular}{l}
+        \usebeamerfont{author}\insertauthor % Авторы выровнены по центру и по левому краю
+      \end{tabular}
+    \end{beamercolorbox}
+    % date
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}
+  \endgroup
+  \vfill
+}
+
+\setbeamerfont{title}{series=\bfseries, size=\LARGE}
+\setbeamerfont{subtitle}{series=\mdseries}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{date}{size=\small}
