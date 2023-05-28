@@ -29,9 +29,10 @@
 \usetheme{Berlin}
 \setbeamertemplate{headline}[default]
 \setbeamertemplate{page number in head/foot}{}
-\setbeamertemplate{navigation symbols}{}
 
 % Номер слайда вместе с заголовком
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{pagenumber}{parent={frametitle}, series=\bfseries}
 \makeatletter
 \defbeamertemplate*{frametitle}{titlewithnumber}[1][left]
 {%
@@ -43,7 +44,7 @@
     \usebeamerfont{frametitle}%
     \vbox{}\vskip-1ex%
     \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
-    \strut\textbf{\insertframetitle}\hspace{0pt plus 1 filll}\textbf{\insertpagenumber}\strut\par%
+    \strut\insertframetitle\hspace{0pt plus 1 filll}\usebeamerfont{pagenumber}\insertpagenumber\strut\par%
     {%
       \ifx\insertframesubtitle\@empty%
       \else%
